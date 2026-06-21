@@ -41,6 +41,23 @@ app.get('/api/weather', async (req, res) => {
   }
 });
 
+// Configuração para servir os arquivos estáticos do frontend em produção
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use(express.static(path.join(__dirname, 'dist')));
+
+app.get('*', (req, res, next) => {
+  if (req.path.startsWith('/api')) {
+    return next();
+  }
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
 app.listen(PORT, () => {
   console.log(`[Backend] Servidor rodando em http://localhost:${PORT}`);
 });
+
