@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clima Li - Previsão do Tempo</title>
+  <meta name="description"
+    content="Um aplicativo de clima com previsões em tempo real, animações atmosféricas dinâmicas e design premium.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⛅</text></svg>">
+</head>
+
+<body class="day-theme">
+  <!-- Dynamic weather animation overlay -->
+  <div id="weather-animation" class="weather-animation-container"></div>
+
+  <div class="app-container">
+    <header class="app-header">
+      <div class="logo">
+        <h1>Clima Li</h1>
+      </div>
+
+      <form id="search-form" class="search-form">
+        <div class="search-wrapper">
+          <input type="text" id="city-input" placeholder="Buscar cidade... (ex: São Paulo)" required autocomplete="off">
+          <button type="submit" class="search-btn" aria-label="Buscar clima">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </div>
+      </form>
+    </header>
+
+    <main class="main-content">
+      <!-- Loading state -->
+      <div id="loader" class="loader hidden">
+        <div class="spinner"></div>
+        <p>Buscando atmosfera...</p>
+      </div>
+
+      <!-- Error State -->
+      <div id="error-card" class="glass-card error-card hidden">
+        <div class="error-icon">⚠️</div>
+        <p id="error-message">Não foi possível carregar as informações do clima.</p>
+      </div>
+
+      <!-- Welcome State -->
+      <div id="welcome-card" class="glass-card welcome-card">
+        <h2>Bem-vindo ao Clima Li</h2>
+        <p>Digite o nome de uma cidade acima para visualizar a previsão do tempo com animações dinâmicas de clima e
+          períodos do dia.</p>
+      </div>
+
+      <!-- Main Weather Panel -->
+      <div id="weather-dashboard" class="weather-dashboard hidden">
+        <section class="current-weather glass-card">
+          <div class="weather-primary-info">
+            <div class="location-time">
+              <h2 id="city-name">Rio de Janeiro</h2>
+              <p id="local-time">Domingo, 12:40</p>
+            </div>
+
+            <div class="temp-display">
+              <span id="temperature">24</span><span class="temp-unit">°C</span>
+            </div>
+
+            <div class="condition-badge">
+              <img id="weather-icon" src="" alt="Ícone do tempo" class="weather-icon-img">
+              <span id="weather-description">Ensolarado</span>
+            </div>
+          </div>
+
+          <div class="weather-stats-grid">
+            <div class="stat-item">
+              <div class="stat-icon">💧</div>
+              <div class="stat-info">
+                <span class="stat-label">Umidade</span>
+                <span id="stat-humidity" class="stat-value">65%</span>
+              </div>
+            </div>
+
+            <div class="stat-item">
+              <div class="stat-icon">💨</div>
+              <div class="stat-info">
+                <span class="stat-label">Vento</span>
+                <span id="stat-wind" class="stat-value">12 km/h</span>
+              </div>
+            </div>
+
+            <div class="stat-item">
+              <div class="stat-icon">🔥</div>
+              <div class="stat-info">
+                <span class="stat-label">Sensação</span>
+                <span id="stat-feelslike" class="stat-value">26°C</span>
+              </div>
+            </div>
+
+            <div class="stat-item">
+              <div class="stat-icon">☀️</div>
+              <div class="stat-info">
+                <span class="stat-label">Índice UV</span>
+                <span id="stat-uv" class="stat-value">5 (Moderado)</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Forecast Section -->
+        <section class="forecast-section">
+          <h3>Previsão para os Próximos Dias</h3>
+          <div id="forecast-container" class="forecast-grid">
+            <!-- Forecast cards will be dynamically injected here -->
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="app-footer">
+      <p>⛅ Desenvolvido por • Eliane Orlandin ⛅</p>
+    </footer>
+  </div>
+
+  <script type="module" src="/main.js"></script>
+</body>
+
+</html>
