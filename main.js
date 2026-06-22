@@ -30,7 +30,7 @@ searchForm.addEventListener('submit', (e) => {
 });
 
 // Fetch Weather Data from Express Proxy
-async function fetchWeather(city) {
+export async function fetchWeather(city) {
   showState('loading');
   try {
     const response = await fetch(`/api/weather?city=${encodeURIComponent(city)}`);
@@ -78,7 +78,7 @@ function stopHomeWeatherCycle() {
 }
 
 // Show/Hide States
-function showState(state) {
+export function showState(state) {
   loader.classList.add('hidden');
   errorCard.classList.add('hidden');
   welcomeCard.classList.add('hidden');
@@ -100,7 +100,7 @@ function showState(state) {
 }
 
 // Update Dashboard UI with API response
-function updateUI(data) {
+export function updateUI(data) {
   const current = data.current;
   const location = data.location;
   const forecastDays = data.forecast.forecastday;
@@ -163,7 +163,7 @@ function updateUI(data) {
 
 // Map condition codes to UI Themes & Animations
 // WeatherAPI codes reference: https://www.weatherapi.com/docs/weather_conditions.json
-function applyAtmosphere(code, isDay) {
+export function applyAtmosphere(code, isDay) {
   // Clear any existing particles/animations
   weatherAnimationContainer.innerHTML = '';
   document.body.className = ''; // clear theme classes

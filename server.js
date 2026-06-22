@@ -24,7 +24,7 @@ app.get('/api/weather', async (req, res) => {
 
   try {
     const url = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${encodeURIComponent(city)}&days=3&aqi=no&alerts=no&lang=pt`;
-    const response = await fetch(url);
+    const response = await fetch(url, { signal: AbortSignal.timeout(5000) });
     
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
@@ -57,7 +57,11 @@ app.get('*', (req, res, next) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(`[Backend] Servidor rodando em http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, () => {
+    console.log(`[Backend] Servidor rodando em http://localhost:${PORT}`);
+  });
+}
+
+export default app;
 

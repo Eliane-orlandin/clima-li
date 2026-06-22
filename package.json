@@ -9,7 +9,8 @@
     "dev": "npm run dev:backend & npm run dev:frontend",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "vitest run"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -17,6 +18,11 @@
     "express": "^4.19.2"
   },
   "devDependencies": {
-    "vite": "^5.2.11"
+    "@testing-library/dom": "^10.4.1",
+    "jsdom": "^29.1.1",
+    "msw": "^2.14.6",
+    "supertest": "^7.2.2",
+    "vite": "^5.2.11",
+    "vitest": "^4.1.9"
   }
 }
