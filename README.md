@@ -2,6 +2,9 @@
 
 Um aplicativo web de clima moderno que oferece previsões em tempo real, transições automáticas de dia/noite e animações dinâmicas de clima integradas a um proxy seguro para ocultar chaves de API.
 
+![Clima Li](clima-li.png)
+
+
 ---
 
 ## 🛠️ Tecnologias Utilizadas (Stack)
